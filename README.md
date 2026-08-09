@@ -1,148 +1,190 @@
-# 🏦 AllLife Bank Personal Loan Prediction
+# AllLife Bank — Personal Loan Targeting
 
 <div align="center">
-  <h2>🎯 Machine Learning for Banking Intelligence</h2>
-  <p><em>Predicting Personal Loan Acceptance through Data-Driven Customer Analysis</em></p>
+
+**Sourojit Dhua** · Machine Learning Classification · Banking Analytics
+
+[![Author](https://img.shields.io/badge/Author-Sourojit%20Dhua-0B1420?style=for-the-badge&labelColor=C4A574&color=0B1420)](https://github.com/sourojitd)
+[![Python](https://img.shields.io/badge/Python-3.8%2B-0B1420?style=for-the-badge&logo=python&logoColor=EBE4D6&labelColor=1C3348)](https://www.python.org/)
+[![scikit-learn](https://img.shields.io/badge/scikit--learn-Decision%20Trees-0B1420?style=for-the-badge&logo=scikitlearn&logoColor=EBE4D6&labelColor=1C3348)](https://scikit-learn.org/)
+[![Status](https://img.shields.io/badge/Status-Portfolio%20Ready-0B1420?style=for-the-badge&labelColor=6EB5A2&color=0B1420)](https://sourojitd.github.io/AIML-AllLifeBank/)
+[![Pages](https://img.shields.io/badge/GitHub%20Pages-Live-0B1420?style=for-the-badge&logo=github&logoColor=EBE4D6&labelColor=C4A574)](https://sourojitd.github.io/AIML-AllLifeBank/)
+
+<br/>
+
+[![Typing SVG](https://readme-typing-svg.demolab.com?font=Unbounded&weight=600&size=22&duration=3200&pause=900&color=C4A574&center=true&vCenter=true&width=720&height=46&lines=Liability+customers+%E2%86%92+loan+converters;Recall-first+decision+trees;Interpretable+banking+ML)](https://sourojitd.github.io/AIML-AllLifeBank/)
+
 </div>
 
-## 📊 Project Overview
+---
 
-**Author:** Sourojit Dhua  
-**Project Type:** Machine Learning Classification  
-**Domain:** Banking & Financial Services  
+## Why this matters
 
-This project focuses on building a predictive model to help AllLife Bank identify potential customers who are likely to accept personal loan offers. By analyzing customer demographics, financial behavior, and banking relationships, the model aims to improve the bank's marketing campaign effectiveness and increase loan conversion rates.
+AllLife Bank has a large **liability** (depositor) base and a thin **asset** (borrower) base. A prior personal-loan campaign converted just over **9%**. Marketing needs a sharper list: who is actually likely to accept a loan, so spend concentrates on high-probability customers.
 
-## 🎯 Business Problem
+I built an **interpretable decision-tree classifier** that predicts personal-loan uptake, surfaces the attributes that drive acceptance, and gives the retail team segments they can act on — not a black-box score.
 
-AllLife Bank, a US-based financial institution, has a substantial customer base primarily consisting of liability customers (depositors). However, the number of asset customers (borrowers) remains relatively small. The bank's management seeks to:
+**Live site:** [sourojitd.github.io/AIML-AllLifeBank](https://sourojitd.github.io/AIML-AllLifeBank/)  
+**Full analysis report:** [`docs/report.html`](./docs/report.html)
 
-- **Convert liability customers to personal loan customers** while retaining their deposits
-- **Improve targeting** for marketing campaigns beyond the previous 9% success rate
-- **Identify high-potential customers** for personal loan products
-- **Optimize marketing spend** by focusing on customers most likely to convert
+---
 
-## 🔍 Project Objectives
+## Problem → approach → outcome
 
-1. **Predict** whether a liability customer will purchase a personal loan
-2. **Identify** the most significant customer attributes driving loan purchases  
-3. **Segment** customers to determine optimal targeting strategies
-4. **Provide actionable insights** for the marketing department
+| Layer | Detail |
+| --- | --- |
+| **Problem** | Binary classification — will a liability customer accept a personal loan? |
+| **Data** | 5,000 customer profiles (demographics, income, spend, product holdings). **Dataset is confidential and not redistributed in this repository.** |
+| **Model family** | `DecisionTreeClassifier` variants only (default, `class_weight='balanced'`, pre-pruning, post-pruning) |
+| **Selection metric** | **Recall** on a stratified holdout (missed converters cost growth) |
+| **Final model** | Pre-pruned tree — `max_depth=6`, `max_leaf_nodes=50`, `min_samples_split=30` |
+| **Holdout result** | Accuracy **0.983** · Recall **0.910** · Precision **0.910** · F1 **0.910** |
+| **Key drivers** | Income · Family size · Education · Credit-card average spend |
 
-## 📈 Dataset Information
+---
 
-The dataset contains **5,000 customer records** with the following features:
+## Architecture
 
-| Feature | Description | Type |
-|---------|-------------|------|
-| `ID` | Customer unique identifier | Numeric |
-| `Age` | Customer's age in years | Numeric |
-| `Experience` | Years of professional experience | Numeric |
-| `Income` | Annual income (in thousands USD) | Numeric |
-| `ZIPCode` | Home address ZIP code | Numeric |
-| `Family` | Family size | Numeric |
-| `CCAvg` | Average monthly credit card spending (in thousands USD) | Numeric |
-| `Education` | Education level (1: Undergrad, 2: Graduate, 3: Advanced/Professional) | Categorical |
-| `Mortgage` | House mortgage value (in thousands USD) | Numeric |
-| `Personal_Loan` | **Target Variable** - Loan acceptance (0: No, 1: Yes) | Binary |
-| `Securities_Account` | Has securities account (0: No, 1: Yes) | Binary |
-| `CD_Account` | Has certificate of deposit account (0: No, 1: Yes) | Binary |
-| `Online` | Uses internet banking (0: No, 1: Yes) | Binary |
-| `CreditCard` | Uses credit card from other banks (0: No, 1: Yes) | Binary |
-
-## 🛠️ Technical Implementation
-
-### Technologies Used
-- **Python 3.8+**
-- **Pandas** - Data manipulation and analysis
-- **NumPy** - Numerical computations
-- **Matplotlib & Seaborn** - Data visualization
-- **Scikit-learn** - Machine learning algorithms
-- **Jupyter Notebook** - Development environment
-
-### Machine Learning Approach
-- **Problem Type:** Binary Classification
-- **Target Variable:** Personal_Loan (0/1)
-- **Evaluation Metrics:** Accuracy, Precision, Recall, F1-Score, ROC-AUC
-- **Models Implemented:** Multiple algorithms with performance comparison
-
-## 📁 Project Structure
-
-```
-AllLife-Bank/
-├── 📊 Loan_Modelling.csv                                              # Customer dataset
-├── 📓 AllLifeBank_Sourojit_Dhua_AIML_ML_Project_full_code_notebook.ipynb  # Main Jupyter notebook
-├── 🌐 AllLifeBank_Sourojit_Dhua_AIML_ML_Project_full_code_notebook.html   # Detailed HTML report
-├── 🌐 index.html                                                      # Project overview page
-└── 📖 README.md                                                       # Project documentation
+```mermaid
+flowchart LR
+  A[Customer profiles] --> B[EDA & sanity checks]
+  B --> C[Clean + encode]
+  C --> D[Stratified 70/30 split]
+  D --> E[Decision tree variants]
+  E --> F{Compare recall / F1}
+  F --> G[Pre-pruned tree selected]
+  G --> H[Rules + feature importance]
+  H --> I[Marketing targeting guidance]
 ```
 
-## 🔬 Key Analysis Areas
-
-### 1. Exploratory Data Analysis (EDA)
-- **Distribution Analysis** of mortgage attributes and outlier detection
-- **Credit Card Usage** patterns among customers
-- **Correlation Analysis** between features and loan acceptance
-- **Age Demographics** impact on loan interest
-- **Education Level** influence on purchasing behavior
-
-### 2. Data Preprocessing
-- Missing value treatment
-- Feature engineering and selection
-- Outlier detection and handling
-- Data normalization and scaling
-- Train-test split preparation
-
-### 3. Model Development
-- Multiple algorithm implementation
-- Hyperparameter tuning
-- Cross-validation
-- Performance optimization
-- Model comparison and selection
-
-### 4. Business Insights
-- Customer segmentation strategies
-- Feature importance analysis
-- Actionable recommendations for marketing campaigns
-
-## 🎯 Key Findings & Insights
-
-*[This section would be populated based on the actual analysis results from the notebook]*
-
-## 🚀 Getting Started
-
-### Prerequisites
-```bash
-pip install numpy==1.25.2 pandas==1.5.3 matplotlib==3.7.1 seaborn==0.13.1 scikit-learn==1.2.2
+```mermaid
+mindmap
+  root((AllLife ML))
+    EDA
+      Class imbalance ~9%
+      Skewed Income / CCAvg
+      Age–Experience collinearity
+    Modeling
+      DecisionTreeClassifier
+      class_weight balanced
+      Pre-pruning search
+      CCP post-pruning
+    Evaluation
+      Stratified holdout
+      Recall-first selection
+      Confusion matrices
+    Business
+      Segment rules
+      Campaign prioritization
+      Driver storytelling
 ```
 
-### Running the Analysis
-1. Clone this repository
-2. Install required dependencies
-3. Open the Jupyter notebook: `AllLifeBank_Sourojit_Dhua_AIML_ML_Project_full_code_notebook.ipynb`
-4. Run all cells sequentially
-5. View detailed results in: `AllLifeBank_Sourojit_Dhua_AIML_ML_Project_full_code_notebook.html`
-6. Check project overview: `index.html`
+---
 
-## 📊 Model Performance
+## Topics & skills demonstrated
 
-*[Performance metrics and comparison table would be added here based on results]*
+<details>
+<summary><strong>Exploratory data analysis</strong></summary>
 
-## 💡 Business Recommendations
+- Univariate profiling for Income, Mortgage, CCAvg, Experience
+- Categorical distributions for Education, product flags, and `Personal_Loan`
+- Correlation analysis (Age–Experience ≈ 0.99) and target relationship views by age / education
+- Explicit treatment of the ~9% minority class before modeling
 
-*[Strategic recommendations for AllLife Bank would be detailed here]*
+</details>
 
-## 🤝 Contributing
+<details>
+<summary><strong>Data preparation for classification</strong></summary>
 
-This project was developed as part of an AI/ML course module. For questions or suggestions, please reach out to Sourojit Dhua.
+- Identifier / non-predictive field handling (e.g. ID, ZIP after checks)
+- Education encoding for tree splits
+- Stratified train–test split (`test_size=0.30`, `random_state=1`) to preserve class rates
 
-## 📄 License
+</details>
 
-This project is for educational purposes as part of Module 2 coursework.
+<details>
+<summary><strong>Interpretable supervised learning</strong></summary>
+
+- Baseline trees vs `class_weight='balanced'`
+- Hyperparameter **pre-pruning** over `max_depth`, `max_leaf_nodes`, `min_samples_split`
+- **Cost-complexity post-pruning** (`ccp_alpha` sweep) with recall-vs-alpha diagnostics
+- `export_text` decision rules + feature-importance ranking for stakeholder review
+
+</details>
+
+<details>
+<summary><strong>Evaluation discipline</strong></summary>
+
+- Metrics: Accuracy, Precision, Recall, F1 — selection driven by **test recall**
+- Confusion-matrix review focused on false negatives (lost loan opportunities)
+- Learning-curve check that the chosen complexity generalizes
+
+</details>
+
+<details>
+<summary><strong>Business translation</strong></summary>
+
+- Ranked drivers: **Income**, **Family**, **Education**, **CCAvg**
+- Segment-style rules (e.g. higher income interacting with education / family size)
+- Recommendations for concentrating campaign budget on model-flagged customers
+
+</details>
+
+---
+
+## Model comparison (test set)
+
+| Model | Accuracy | Recall | Precision | F1 |
+| --- | ---: | ---: | ---: | ---: |
+| Decision Tree (sklearn default) | 0.982 | 0.861 | 0.947 | 0.902 |
+| Decision Tree (`class_weight`) | 0.982 | 0.882 | 0.927 | 0.904 |
+| **Decision Tree (pre-pruning)** ★ | **0.983** | **0.910** | **0.910** | **0.910** |
+| Decision Tree (post-pruning) | 0.982 | 0.903 | 0.909 | 0.906 |
+
+★ Selected for highest test recall with balanced precision.
+
+---
+
+## Repository layout
+
+```text
+AIML-AllLifeBank/
+├── README.md       # This portfolio brief
+└── docs/           # GitHub Pages site + full report
+    ├── index.html
+    ├── styles.css
+    ├── main.js
+    └── report.html # Full executed analysis report
+```
+
+---
+
+## Stack
+
+- **Python** · **pandas** · **NumPy**
+- **matplotlib** · **seaborn**
+- **scikit-learn** (`DecisionTreeClassifier`, stratified split, pruning, metrics)
+- Analysis delivered as an interactive HTML report (source notebook / raw customer file not published)
+
+---
+
+## Dataset confidentiality
+
+The customer modeling dataset used for this project is **confidential** and is **not included** in this repository. Metrics, charts, and conclusions in [`docs/report.html`](./docs/report.html) reflect the completed analysis; raw rows are withheld.
+
+---
+
+## Explore
+
+1. Open the portfolio site: [GitHub Pages](https://sourojitd.github.io/AIML-AllLifeBank/)
+2. Read the full technical report: [`docs/report.html`](./docs/report.html) · [live](https://sourojitd.github.io/AIML-AllLifeBank/report.html)
+3. Skim the skills / pipeline sections above for interview-depth talking points
 
 ---
 
 <div align="center">
-  <strong>Developed with ❤️ by Sourojit Dhua</strong><br>
-  <em>Transforming Data into Banking Intelligence</em>
+
+**Built by [Sourojit Dhua](https://github.com/sourojitd)**  
+Interpretable ML for banking growth
+
 </div>

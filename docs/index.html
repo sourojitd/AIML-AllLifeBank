@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>AllLife Bank · Personal Loan Targeting — Sourojit Dhua</title>
+    <meta
+      name="description"
+      content="Decision-tree classifier by Sourojit Dhua that identifies AllLife Bank liability customers most likely to accept a personal loan."
+    />
+    <meta name="author" content="Sourojit Dhua" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Literata:opsz,wght@7..72,400;7..72,500;7..72,600&family=Unbounded:wght@500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <a class="skip-link" href="#overview">Skip to content</a>
+    <div class="mesh" aria-hidden="true"></div>
+    <div class="grain" aria-hidden="true"></div>
+
+    <header class="site-header">
+      <a class="brand-mark" href="#top">AllLife <span>Bank</span></a>
+      <nav class="nav" aria-label="Primary">
+        <a href="#overview">Overview</a>
+        <a href="#architecture">Architecture</a>
+        <a href="#topics">Topics</a>
+        <a href="#results">Results</a>
+        <a href="#author">Author</a>
+      </nav>
+    </header>
+
+    <main id="top">
+      <section class="hero" aria-label="Hero">
+        <div class="hero-visual" aria-hidden="true">
+          <svg viewBox="0 0 1440 900" preserveAspectRatio="xMidYMid slice">
+            <defs>
+              <linearGradient id="g1" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0%" stop-color="#c4a574" stop-opacity="0.35" />
+                <stop offset="55%" stop-color="#6eb5a2" stop-opacity="0.12" />
+                <stop offset="100%" stop-color="#081018" stop-opacity="0" />
+              </linearGradient>
+              <linearGradient id="g2" x1="1" y1="0" x2="0" y2="1">
+                <stop offset="0%" stop-color="#1c3348" stop-opacity="0.9" />
+                <stop offset="100%" stop-color="#081018" stop-opacity="0.2" />
+              </linearGradient>
+            </defs>
+            <rect width="1440" height="900" fill="url(#g2)" />
+            <path
+              d="M-40 620 C220 480, 420 760, 720 540 S1180 320, 1520 480 L1520 940 L-40 940 Z"
+              fill="url(#g1)"
+            >
+              <animate
+                attributeName="d"
+                dur="18s"
+                repeatCount="indefinite"
+                values="
+                  M-40 620 C220 480, 420 760, 720 540 S1180 320, 1520 480 L1520 940 L-40 940 Z;
+                  M-40 580 C260 700, 480 420, 760 600 S1200 500, 1520 420 L1520 940 L-40 940 Z;
+                  M-40 620 C220 480, 420 760, 720 540 S1180 320, 1520 480 L1520 940 L-40 940 Z"
+              />
+            </path>
+            <g stroke="#c4a574" stroke-opacity="0.22" fill="none" stroke-width="1">
+              <path d="M120 80 H420 V280 H120 Z" />
+              <path d="M980 120 H1320 V360 H980 Z" />
+              <path d="M560 40 V220" />
+              <path d="M480 120 H640" />
+              <circle cx="1120" cy="620" r="120" />
+              <circle cx="1120" cy="620" r="70" />
+              <path d="M200 720 H520" />
+              <path d="M240 760 H480" />
+            </g>
+            <g fill="#e2c89a" fill-opacity="0.55">
+              <circle cx="300" cy="210" r="2.5">
+                <animate attributeName="opacity" values="0.2;0.9;0.2" dur="4s" repeatCount="indefinite" />
+              </circle>
+              <circle cx="1180" cy="240" r="2.5">
+                <animate attributeName="opacity" values="0.9;0.2;0.9" dur="5s" repeatCount="indefinite" />
+              </circle>
+              <circle cx="900" cy="160" r="2">
+                <animate attributeName="opacity" values="0.3;1;0.3" dur="3.5s" repeatCount="indefinite" />
+              </circle>
+            </g>
+          </svg>
+          <div class="hero-fade"></div>
+        </div>
+
+        <div class="hero-copy">
+          <h1 class="hero-brand">AllLife <em>Bank</em></h1>
+          <p class="hero-headline">Target liability customers who will actually take the personal loan.</p>
+          <p class="hero-support">
+            An interpretable decision-tree classifier that turns campaign waste into precision outreach — built by
+            Sourojit Dhua.
+          </p>
+          <div class="cta-row">
+            <a class="btn btn-primary" href="report.html">Open full report</a>
+            <a class="btn btn-ghost" href="https://github.com/sourojitd/AIML-AllLifeBank">View repository</a>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="overview">
+        <div class="section-inner reveal">
+          <p class="eyebrow">Overview</p>
+          <h2>From 9% campaign luck to model-guided conversion</h2>
+          <p class="lead">
+            AllLife Bank’s liability base is large; its borrower base is not. Last year’s personal-loan campaign
+            converted just over 9%. This project builds a recall-aware classifier so marketing can prioritize customers
+            with the highest probability of accepting a loan — without inventing black-box complexity.
+          </p>
+          <div class="metrics" aria-label="Key results">
+            <div class="metric">
+              <strong>5,000</strong>
+              <span>Customer profiles studied</span>
+            </div>
+            <div class="metric">
+              <strong>0.910</strong>
+              <span>Test recall (pre-pruned)</span>
+            </div>
+            <div class="metric">
+              <strong>0.983</strong>
+              <span>Test accuracy</span>
+            </div>
+            <div class="metric">
+              <strong>4</strong>
+              <span>Tree variants compared</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="architecture">
+        <div class="section-inner reveal">
+          <p class="eyebrow">Architecture</p>
+          <h2>A crisp supervised pipeline</h2>
+          <p class="lead">
+            Click each stage to inspect decisions that matter in production banking ML — imbalance, leakage discipline,
+            and pruning for generalization.
+          </p>
+          <div class="pipeline">
+            <div class="step-list" data-step-list role="tablist" aria-label="Pipeline stages"></div>
+            <div class="step-panel" data-step-panel role="tabpanel" aria-live="polite"></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="topics">
+        <div class="section-inner reveal">
+          <p class="eyebrow">Topics in depth</p>
+          <h2>Skills demonstrated</h2>
+          <p class="lead">Filter by theme, then expand any topic for the concrete technique used in this project.</p>
+          <div class="filters" data-filters>
+            <button class="filter-btn" type="button" data-filter="all" aria-pressed="true">All</button>
+            <button class="filter-btn" type="button" data-filter="eda" aria-pressed="false">EDA</button>
+            <button class="filter-btn" type="button" data-filter="ml" aria-pressed="false">Modeling</button>
+            <button class="filter-btn" type="button" data-filter="eval" aria-pressed="false">Evaluation</button>
+            <button class="filter-btn" type="button" data-filter="biz" aria-pressed="false">Business</button>
+          </div>
+          <div class="topic-grid">
+            <article class="topic" data-topic data-tags="eda" open>
+              <button class="topic-toggle" type="button" data-topic-toggle aria-expanded="true">
+                Class imbalance &amp; campaign base rates
+                <span>EDA</span>
+              </button>
+              <div class="topic-body">
+                Personal loan acceptance is a minority class (~9%). Distributions, value counts, and stratified splits
+                keep that signal intact so accuracy alone cannot look “good” while missing converters.
+              </div>
+            </article>
+            <article class="topic" data-topic data-tags="eda">
+              <button class="topic-toggle" type="button" data-topic-toggle aria-expanded="false">
+                Feature relationships that matter
+                <span>EDA</span>
+              </button>
+              <div class="topic-body">
+                Income and CCAvg are right-skewed; Age and Experience correlate ~0.99. Education and product holdings
+                (especially CD accounts in tree rules) interact with spend and family size in the decision paths.
+              </div>
+            </article>
+            <article class="topic" data-topic data-tags="ml">
+              <button class="topic-toggle" type="button" data-topic-toggle aria-expanded="false">
+                Interpretable trees over opaque ensembles
+                <span>Modeling</span>
+              </button>
+              <div class="topic-body">
+                Used <code>DecisionTreeClassifier</code> so marketing can read exportable rules. Compared default trees,
+                <code>class_weight='balanced'</code>, hyperparameter pre-pruning, and CCP post-pruning — not a grab-bag
+                of unrelated algorithms.
+              </div>
+            </article>
+            <article class="topic" data-topic data-tags="ml">
+              <button class="topic-toggle" type="button" data-topic-toggle aria-expanded="false">
+                Pre-pruning vs cost-complexity pruning
+                <span>Modeling</span>
+              </button>
+              <div class="topic-body">
+                Pre-pruning searched <code>max_depth</code>, <code>max_leaf_nodes</code>, and
+                <code>min_samples_split</code>. Post-pruning swept <code>ccp_alpha</code> for peak recall. Selected model:
+                depth 6, 50 leaf nodes, min split 30.
+              </div>
+            </article>
+            <article class="topic" data-topic data-tags="eval">
+              <button class="topic-toggle" type="button" data-topic-toggle aria-expanded="false">
+                Recall-first evaluation design
+                <span>Evaluation</span>
+              </button>
+              <div class="topic-body">
+                False negatives (missed likely borrowers) waste growth opportunity. Model selection optimized test recall
+                while watching precision and F1 so outreach does not explode false positives.
+              </div>
+            </article>
+            <article class="topic" data-topic data-tags="biz">
+              <button class="topic-toggle" type="button" data-topic-toggle aria-expanded="false">
+                Actionable targeting drivers
+                <span>Business</span>
+              </button>
+              <div class="topic-body">
+                Income, family size, education level, and credit-card spend dominate importance. Rules surface clear
+                segments (e.g. higher income + larger family / graduate+ education) for campaign prioritization.
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="results">
+        <div class="section-inner reveal">
+          <p class="eyebrow">Results</p>
+          <h2>Model comparison on the holdout set</h2>
+          <p class="lead">
+            Pre-pruning delivered the strongest test recall and was selected as the final model. Default trees overfit
+            the training set (perfect train scores) despite solid test accuracy.
+          </p>
+          <table class="model-table">
+            <thead>
+              <tr>
+                <th>Model</th>
+                <th>Accuracy</th>
+                <th>Recall</th>
+                <th>Precision</th>
+                <th>F1</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Decision Tree (default)</td>
+                <td>0.982</td>
+                <td>0.861</td>
+                <td>0.947</td>
+                <td>0.902</td>
+              </tr>
+              <tr>
+                <td>Decision Tree (class_weight)</td>
+                <td>0.982</td>
+                <td>0.882</td>
+                <td>0.927</td>
+                <td>0.904</td>
+              </tr>
+              <tr class="is-best">
+                <td>Decision Tree (pre-pruning) ★</td>
+                <td>0.983</td>
+                <td>0.910</td>
+                <td>0.910</td>
+                <td>0.910</td>
+              </tr>
+              <tr>
+                <td>Decision Tree (post-pruning)</td>
+                <td>0.982</td>
+                <td>0.903</td>
+                <td>0.909</td>
+                <td>0.906</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="section" id="author">
+        <div class="section-inner author reveal">
+          <div>
+            <p class="eyebrow">Author</p>
+            <h2>Built end-to-end by Sourojit Dhua</h2>
+            <p class="lead">
+              Data science portfolio project covering EDA, preprocessing, interpretable supervised learning, and
+              business recommendations for retail banking growth teams.
+            </p>
+          </div>
+          <aside class="author-card">
+            <h3>Sourojit Dhua</h3>
+            <p>Machine learning · Analytics · Decision systems</p>
+            <div class="author-links">
+              <a class="btn btn-primary" href="https://github.com/sourojitd">GitHub</a>
+              <a class="btn btn-ghost" href="report.html">Full report</a>
+            </div>
+          </aside>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <span>© Sourojit Dhua</span>
+      <span>AllLife Bank Personal Loan Targeting</span>
+    </footer>
+
+    <script src="main.js"></script>
+  </body>
+</html>
